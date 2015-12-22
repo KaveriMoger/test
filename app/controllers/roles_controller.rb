@@ -1,6 +1,6 @@
 class RolesController < ApplicationController
-  #before_filter :authenticate_user!, :except => [:index]
-  #before_filter :authenticate_user!, :except => [:index]
+  before_filter :authenticate_user!, :except => [:index]
+
   def index
     @role = Role.all
   end
@@ -8,7 +8,7 @@ class RolesController < ApplicationController
   def new
     @role = Role.new
   end
-  
+
   def create
     @role = Role.new(role_params)
     if @role.save
