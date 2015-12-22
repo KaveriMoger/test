@@ -1,0 +1,17 @@
+class Document < ActiveRecord::Base
+attr_accessor :upload
+  def self.save(upload['datafile'],r_ip)
+    name = upload.original_filename
+    directory = "#{Rails.root}/public/data/"
+
+    # create the file path
+    path = File.join(directory,name)
+    # write the file
+    File.open(path, "wb") { |f| f.write(upload['datafile'].read) }
+  end
+belongs_to :team
+has_and_belongs_to_many :clients
+end
+
+
+

@@ -1,0 +1,17 @@
+<p>
+ <strong>Team-Name</strong>
+ <%= @team.tname %>
+</p>
+
+<p>
+ <strong>Client-ID</strong>
+ <%= @team.Client_id %>
+</p>
+
+<p>
+  <strong>Document-ID</strong>
+  <%= @team.Document_id %>
+</p>
+
+
+<%= link_to 'back', teams_path %>

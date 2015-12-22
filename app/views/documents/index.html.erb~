@@ -1,0 +1,35 @@
+<%= link_to 'New document', new_document_path %>
+
+<h1>Listing documents</h1>                
+ 
+<table>
+  <tr>
+    <th>Doc-NAME</th>
+    <th>Doc-AUTHOR</th>
+    <th>Doc-DESCRIPTION</th>
+    
+  </tr>
+ 
+  <% @document.each do |document| %>
+    <tr>
+      <td><%= document.dname %></td>
+      <td><%= document.dauthor %></td>
+      <td><%= document.description %>
+      
+      <td><%= link_to 'Show', document_path(document) %></td>
+      <td><%= link_to 'Edit', edit_document_path(document) %></td>
+      <td><%= link_to 'Destroy', document_path(document),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+  
+<% end %>
+
+
+
+
+
+
+

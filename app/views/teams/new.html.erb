@@ -1,0 +1,50 @@
+<img src="/images/242x82.png"> </img>
+
+
+<div class="signup_block">
+
+<%= form_for :team, url: teams_path do|f| %>
+<div class="section_block" id="section_block">
+        <div class="login_content">
+          <div class="login-head">
+            <h1>Team Page</h1>
+          </div>
+<% if @team.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@team.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @team.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<p class="form-group">
+<%= f.label :team_name %>
+<%= f.select(:team_name, options_for_select([['CORE','CORE'],['DESIGN','DESIGN'],['IMPLEMENTATION','IMPLEMENTATION'],['INFRASTRUCTURE','INFRASTRUCTURE'],['PRODUCTION','PRODUCTION'],['ADMIN','ADMIN']])) %>
+</p>
+
+
+<p class="form-group">
+<%= f.label :team_head %>
+<%= f.text_field :team_head %>
+</p>
+
+
+
+<p class="form-group">
+<%= f.label :summary %>
+<%= f.text_field :summary %>
+</p>
+
+
+
+<p class="button">
+<%= f.submit %>
+</p>
+
+<% end %>
+<%= link_to 'Back', teams_path %>

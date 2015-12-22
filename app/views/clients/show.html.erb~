@@ -1,0 +1,28 @@
+<p>
+<strong>Client-Name:</strong>
+<%= @client.c_name %>
+</p>
+
+<p>
+ <strong>Client-Email:</strong>
+ <%= @client.c_email %>
+</p>
+
+
+<p>
+ <strong>Client-Website:</strong>
+ <%= @client.c_website %>
+</p>
+
+<p>
+  <strong>Client-Country:</strong>
+ <%= @client.c_country %>
+</p>
+
+
+
+
+
+<%= link_to 'Back', clients_path %>
+
+

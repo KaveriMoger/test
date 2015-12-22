@@ -1,0 +1,82 @@
+<img src="/images/242x82.png"> </img>
+
+
+<div class="signup_block">
+
+
+  <%= form_for (:document) , url: documents_create_path, :html => { :multipart => true } do|f| %>
+
+      <div class="section_block" id="section_block">
+        <div class="login_content">
+          <div class="login-head">
+            <h1>Document Page</h1>
+          </div><!--login-head-->
+
+
+
+
+
+
+
+<%#= form_for (:document) , url: documents_create_path, :html => { :multipart => true } do|f| %>
+<% if @document.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@document.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @document.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>                                                                               
+  <% end %>
+
+<p class="form-group">
+<%= f.label :Title %>
+<%= f.text_field :dname %>
+</p>
+
+<p class="form-group">
+
+<%= f.label :Author %>
+<%= f.text_field :dauthor %>
+</p>
+
+<p class="form-group">
+
+<%= f.label :Description %>
+<%= f.text_field :description %>
+</p>
+
+<p class="form-group">
+
+<%= f.label :Team_Name %>
+<%= f.select(:team_name, options_for_select([['CORE','CORE'],['DESIGN','DESIGN'],['IMPLEMENTATION','IMPLEMENTATION'],['INFRASTRUCTURE','INFRASTRUCTURE'],['PRODUCTION','PRODUCTION'],['ADMIN','ADMIN']])) %>
+</p>
+
+<p>
+  <label for="Upload_file">Upload file</label>
+  <%= file_field 'upload', 'dafile' %>
+</p>
+<%#= submit_tag "Upload" %>
+
+
+<p class = "button">
+<%= f.submit %>
+</p>
+
+
+<% end %>
+
+<%= link_to 'Download', documents_path(@document) %>
+
+<%= link_to 'Back', documents_path %>
+
+ 
+
+
+
+
+

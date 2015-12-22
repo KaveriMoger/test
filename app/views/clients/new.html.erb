@@ -1,0 +1,55 @@
+<img src="/images/242x82.png"> </img>
+
+
+<div class="signup_block">
+
+
+<%= form_for :client, url: clients_path, :html => { :multipart => true }  do|f| %>
+<div class="section_block" id="section_block">
+        <div class="login_content">
+          <div class="login-head">
+            <h1>Client Page</h1>
+          </div>
+
+<% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@client.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @client.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p class="form-group">
+<%= f.label :Name %>
+<%= f.text_field :c_name %>
+</p>
+
+<p class="form-group">
+<%= f.label :Email %>
+<%= f.email_field :c_email %>
+</p>
+
+<p class="form-group">
+<%= f.label :Website %>
+<%= f.text_field :c_website %>
+</p>
+
+<p class="form-group">
+<%= f.label :Country %>
+<%= f.text_field :c_country %>
+</p>
+
+
+
+<p class= "button" >
+<%= f.submit %>
+</p>
+
+<% end %>
+<%= link_to 'Back', clients_path %>

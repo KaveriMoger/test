@@ -1,0 +1,61 @@
+class DocumentsController < ApplicationController
+   
+
+
+   def index
+    @document=Document.all
+    
+   end
+   
+   def show
+    @document=Document.find(params[:id])
+   end
+
+   def new
+    
+     #render :text => "file has been uploaded successfully"
+    @document=Document.new
+    
+   end
+  
+   def edit
+    @document=Document.find(params[:id])
+   end
+   #def uploadFile
+     #document = Document.save(params[:upload])
+     #render :text => "file has been uploaded successfully"
+   #end
+  
+   def create
+    @document=Document.new(doc_params)
+    document = Document.save(params[:upload]) 
+    if @document.save
+     redirect_to @document
+     else
+     render 'new'                           
+    end
+   end
+
+   def update
+     @document=Document.find(params[:id])
+
+     if @document.update(doc_params)
+      redirect_to @document
+      else
+      render 'edit'
+     end
+   end
+   
+   def destroy
+    @document=Document.find(params[:id])
+    @document.destroy
+
+    redirect_to documents_path
+  end
+ 
+ private
+  def doc_params
+   params.require(:document).permit(:dname, :dauthor, :description, :team_id)
+  end
+
+end

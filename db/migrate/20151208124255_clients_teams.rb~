@@ -1,0 +1,4 @@
+class ClientsTeams < ActiveRecord::Migration
+  def change
+  end
+end
