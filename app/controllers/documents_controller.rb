@@ -1,8 +1,9 @@
 class DocumentsController < ApplicationController
-   
+  before_filter :authenticate_user!, :except => [:index, :show]
 
 
-   def index
+
+  def index
     @document=Document.all
     #render :file => 'home\Project1\public\data'
     
