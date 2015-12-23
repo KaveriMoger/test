@@ -3,8 +3,11 @@ Project1::Application.routes.draw do
   
   
   
+  get "password_resets/new"
+  get "sessions/new"
+  get "users/new"
   #get "sessions/new"
-  devise_for :users
+  #devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords'}
   #devise_for :users
   
   #get "clients/index"
@@ -14,24 +17,11 @@ Project1::Application.routes.draw do
   get "documents/new" => "documents#new"
   post "documents/create" => "documents#create"
   post "documents/show"   => "documents#show"
-  #get "/sessions/new" => "sessions#new"
-  get "/users/sign_in" => "sessions#new"
-  post "/users/sign_in" => "devise/sessions#create"
-  delete "/users/sign_out" => "devise/sessions#destroy"
-  get "/users/sign_up" => "devise/registrations#new"
-  post "/users/edit" => "devise/registrations#edit"
-   
-  get  "/users/password/new" => "devise/passwords#new"
-  get   "/users/password/edit" => "devise/passwords#edit"
-  patch "/users/password/"     =>  "devise/passwords#update"
-  put   "/users/password"  =>     "devise/passwords#update"
-  get   "/users/cancel"  =>  "devise/registrations#cancel"
-  post  "/users/create"      => "devise/registrations#create"
-  patch  "/users/:id/update"     => "devise/registrations#update"
-  put    "/users/update"     => "devise/registrations#update"
-  delete "/users/destroy"     => "devise/registrations#destroy"
-  #root to: "home#index"
-  resources :clients, :documents, :teams, :users, :roles,:user_auths, :role_auths
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
+  root :to => "users#new"
+  resources :clients, :documents, :teams, :users, :roles, :sessions,:password_resets
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
