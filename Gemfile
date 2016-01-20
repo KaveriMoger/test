@@ -5,12 +5,14 @@ gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'byebug'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
@@ -32,7 +34,10 @@ group :doc do
   gem 'sdoc', require: false
 
 gem "bcrypt-ruby", :require => "bcrypt"
-
+  gem 'carrierwave'
+  gem 'bootstrap-sass'
+  gem 'paperclip'
+  gem 'nifty-generators'
 
 end
 
@@ -48,4 +53,8 @@ gem 'devise'
 gem 'cancan'
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+ gem 'debugger', group: [:development, :test]
+#gem 'sunspot_rails'
+ group :development do
+    gem 'sunspot_solr'
+  end
