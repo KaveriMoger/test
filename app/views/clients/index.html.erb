@@ -1,28 +1,90 @@
-<%= link_to 'New client', new_client_path %>
+<img src="/images/242x82.png"> </img>
+<div class="left">
+  <div class="menu-block">
+    <div class="horizontalmenu">
+      <ul>
+        <ul>
+          <li><a class="active" href="/home">Home</a></li>
 
-<h1>Listing clients</h1>
- 
-<table>
-  <tr>
-    <th>NAME</th>
-    <th>EMAIL</th>
-    <th>Website</th>
-    <th>Country</th>
-    
-  </tr>
- 
-  <% @client.each do |client| %>
-    <tr>
-      <td><%= client.c_name %></td>
-      <td><%= client.c_email %></td>
-      <td><%= client.c_website %></td>
-      <td><%= client.c_country %></td>
-     
-      <td><%= link_to 'Show', client_path(client) %></td>
-      <td><%= link_to 'Edit', edit_client_path(client) %></td>
-      <td><%= link_to 'Destroy', client_path(client),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+        </ul>
+        <li><%= link_to 'Documents'%>
+          <ul>
+            <li><%= link_to 'Documents Create', new_document_path %></li>
+            <li><%= link_to 'Documents Listing', documents_path %></li>
+          </ul>
+        </li>
+        <li><%= link_to 'Clients'%>
+          <ul>
+            <li><%= link_to 'Clients Create', new_client_path %></li>
+            <li><%= link_to 'Clients Listing', clients_path %></li>
+          </ul>
+
+        </li>
+        <li><%= link_to 'Teams'%>
+          <ul>
+            <li><%= link_to 'Teams Create', new_team_path %></li>
+            <li><%= link_to 'Teams Listing', teams_path %></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div><!--le
+
+<div class="signup_block">
+  <div class="section_block" id="section_block">
+      <div class="login_content">
+        <div class="login-head">
+
+        </div><!--login-head-->
+
+
+<p><center>  <%= form_tag clients_path, :method => 'get' do %>
+
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :dname => nil %>
+
+  <% end %></center></p></br>
+
+
+
+<h1 style="color:darkred"> <center> Listing Clients </center></h1>
+<p style="float:right;list-style-type:none;color:blue">
+  <b><%= link_to 'New..?', new_client_path %></b>
+</p>
+<div class="section_block" id="section_block">
+  <div class="login_content">
+    <div class="login-head">
+
+      <p><center>      <table>
+      <tr>
+        <th style="color:cornflowerblue">NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th style="color:cornflowerblue">EMAIL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th style="color:cornflowerblue">Website&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th style="color:cornflowerblue">Country&nbsp;</th>
+
+      </tr>
+
+      <% @client.each do |client| %>
+          <tr>
+            <td><%= link_to "#{client.c_name}", client_path(client) %>
+
+            <td><%= client.c_email %></td>
+            <td><%= client.c_website %></td>
+            <td><%= client.c_country %></td>
+
+
+            <td><%= button_to 'edit', "/clients/edit?id=#{client.id}", :class => "edit" %></td>
+            <td><%=  button_to 'delete', "/clients/destroy?id=#{client.id}", :class => "delete",
+                               method: :destroy,
+                               data: { confirm: 'Are you sure?' } %></td>
+
+          </tr>
+
+      <% end %>
+    </table></center></p>
+    </div>
+  </div>
+</div>
+</div>
