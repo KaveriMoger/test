@@ -11,3 +11,121 @@
  *= require_self
  *= require_tree .
  */
+
+
+.button {
+    text-align: center;
+}
+#user_nav {
+    float: right;
+    font-size: 16px;
+    padding-right: 20px;
+}
+
+
+.logo{width:100%;float:left;}
+.logo img{margin:0px auto;}
+
+.left{width:100%;float:left;background-color:white;}
+.menu-block{width:100%;float:left;margin-bottom:30px;}
+.horizontalmenu{
+    width:100%;
+    float:left;
+    background-color:#099;
+}
+.horizontalmenu ul {
+    list-style-type:none;
+}
+.horizontalmenu li {
+    position:relative; padding:5px 10px;font-size:16px;background-color:#4285f4;float:left
+}
+
+.horizontalmenu li a{
+    color:#fff;
+}
+
+.horizontalmenu li ul {
+    background-color:#475;
+    border:1px solid #000;
+    display:none;
+    position:absolute;
+    left:-10px;
+    top:29px;
+    height:27px;
+    min-width:100px;
+    z-index:10;
+}
+
+.horizontalmenu li:hover > ul{
+    display:block;
+}
+.horizontalmenu li > ul li{
+    font-size:14px;
+    display:block;
+    border-bottom:1px solid #000;
+}
+
+.horizontalmenu li > ul li:last-child{
+    border-bottom:none;
+}
+ul li:hover > ul {
+    display: block;
+}
+
+.right{
+    width:70%;float:left;
+    background-color:white;
+}
+
+a:link {color: black;}      /* unvisited link */
+a:visited {color: black;}   /* visited link */
+a:hover {color: black;}     /* mouse over link */
+a:active {color: black;}
+.active {
+    background-color: #4CAF50;
+}
+
+
+
+
+.right{
+    width:70%;float:left;
+    background-color:white;
+}
+.table-content th{
+    font-size:16px;
+    padding-right:30px;
+}
+.table-content td{
+    font-size:14px;
+
+}
+.error_messages {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.error_messages h2 {
+    color: #ff0000;
+    font-size: 16px;
+    padding-bottom:6px;
+}
+
+.error_messages li {
+    color: #ff0000;
+    list-style: outside none none;
+    margin-bottom: 4px;
+}
+
+.button input {
+    background: #4386f9 none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    padding: 8px 12px;
+}
+.login-head h1 {
+    color: #000;
+    font-size: 24px;
+}
