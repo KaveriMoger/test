@@ -1,4 +1,4 @@
 class Role < ActiveRecord::Base
-	has_one :user
-	validates :role_name, :presence => true
+  has_many :users
+  validates :role_name, :presence => "true"
 end
