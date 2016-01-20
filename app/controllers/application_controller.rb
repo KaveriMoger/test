@@ -12,14 +12,22 @@ class ApplicationController < ActionController::Base
 
 
 
+  def admin_only
+    current_user
+    if @current_user.role.id !=1
+      redirect_to log_in_path, alert: "you dont have permission to perform this action"
+    end
+  end
 
 
-
+  def authorize
+    if current_user.blank?
+      redirect_to log_in_path, alert: "You must be logged in to perform this action"
+    end
+  end
 
 
 
 end
 #new_user_session_path
-
-
 
