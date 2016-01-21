@@ -1,26 +1,79 @@
-<%= link_to 'New team', new_team_path %>
 
-<h1>Listing teams</h1>
- 
-<table>
-  <tr>
-    <th>Team-NAME</th>
-    <th>Team-Head</th>
-    <th>Team-Summary</th>
-  </tr>
- 
-  <% @team.each do |team| %>
-    <tr>
-      <td><%= team.team_name %></td>
-      <td><%= team.team_head %></td>
-      <td><%= team.summary %></td>
-      
-     
-      <td><%= link_to 'Show', team_path(team) %></td>
-      <td><%= link_to 'Edit', edit_team_path(team) %></td>
-      <td><%= link_to 'Destroy', team_path(team),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+<img src="/images/242x82.png"> </img>
+<div class="left">
+  <div class="menu-block">
+    <div class="horizontalmenu">
+      <ul>
+        <ul>
+          <li><a class="active" href="/home">Home</a></li>
+
+        </ul>
+        <li><%= link_to 'Documents'%>
+          <ul>
+            <li><%= link_to 'Documents Create', new_document_path %></li>
+            <li><%= link_to 'Documents Listing', documents_path %></li>
+          </ul>
+        </li>
+        <li><%= link_to 'Clients'%>
+          <ul>
+            <li><%= link_to 'Clients Create', new_client_path %></li>
+            <li><%= link_to 'Clients Listing', clients_path %></li>
+          </ul>
+
+        </li>
+        <li><%= link_to 'Teams'%>
+          <ul>
+            <li><%= link_to 'Teams Create', new_team_path %></li>
+            <li><%= link_to 'Teams Listing', teams_path %></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div><!--left-->
+
+
+
+
+<p><center> <%= form_tag teams_path, :method => 'get' do %>
+
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :email => nil %>
+
+  <% end %></center></p></br>
+
+
+<h1 style="color:darkred"><center>Listing teams </center></h1>
+<p style="float:right;list-style-type:none;color:blue">
+  <b><%= link_to 'New..?', new_team_path %></b>
+
+</p>
+<div class="section_block" id="section_block">
+  <div class="login_content">
+    <div class="login-head">
+      <p><center><table>
+      <tr>
+        <th style="color:cornflowerblue">NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th style="color:cornflowerblue">Head&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th style="color:cornflowerblue">Summary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      </tr>
+
+      <% @team.each do |team| %>
+          <tr>
+            <td><%= team.team_name %></td>
+            <td><%= team.team_head %></td>
+            <td><%= team.summary %></td>
+
+
+            <td><%=  button_to 'edit', "/teams/edit?id=#{team.id}", :class => "edit" %></td>
+            <td><%=  button_to 'delete', "/teams/destroy?id=#{team.id}", :class => "delete",
+                               method: :destroy,
+                               data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+    </table></center></p>
+    </div>
+  </div>
+</div>
+</div>
