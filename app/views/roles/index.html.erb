@@ -1,24 +1,69 @@
-<%= link_to 'New role', new_role_path %>
 
-<h3>Listing roles</h3>
+<img src="/images/242x82.png"> </img>
+<div class="left">
+  <div class="menu-block">
+    <div class="horizontalmenu">
+      <ul>
+        <ul>
+          <li><a class="active" href="/home">Home</a></li>
 
-<table>
-  <tr>
-    <th>Role-Name</th>
+        </ul>
+        <li><%= link_to 'Documents'%>
+          <ul>
+            <li><%= link_to 'Documents Create', new_document_path %></li>
+            <li><%= link_to 'Documents Listing', documents_path %></li>
+          </ul>
+        </li>
+        <li><%= link_to 'Clients'%>
+          <ul>
+            <li><%= link_to 'Clients Create', new_client_path %></li>
+            <li><%= link_to 'Clients Listing', clients_path %></li>
+          </ul>
+
+        </li>
+        <li><%= link_to 'Teams'%>
+          <ul>
+            <li><%= link_to 'Teams Create', new_team_path %></li>
+            <li><%= link_to 'Teams Listing', teams_path %></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div><!--left-->
+<div class="signup_block">
 
 
-  </tr>
+  <h1 style="color:darkred"><center>Listing Roles</center></h1>
+  <p style="float:right;list-style-type:none;color:blue">
+    <b><%= link_to 'New..?', new_role_path %></b>
+  </p>
+  <div class="section_block" id="section_block">
+    <div class="login_content">
+      <div class="login-head">
 
-  <% @role.each do |role| %>
-      <tr>
-        <td><%= role.role_name %></td>
+        <table>
+          <tr>
+            <th style="color:cornflowerblue">Role-Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 
 
-        <td><%= link_to 'Show', role_path(role) %></td>
-        <td><%= link_to 'Edit', edit_role_path(role) %></td>
-        <td><%= link_to 'Destroy', role_path(role),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-</table>
+          </tr>
+
+          <% @role.each do |role| %>
+              <tr>
+                <td><%= role.role_name %></td>
+
+
+                <td><%=  button_to 'edit', "/roles/edit?id=#{role.id}", :class => "edit"%></td>
+                <td><%=  button_to 'delete', "/roles/destroy?id=#{role.id}", :class => "delete",
+                                   method: :destroy,
+                                   data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!--login-head-->
