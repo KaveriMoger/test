@@ -4,7 +4,7 @@
 <div class="signup_block">
 
 
-  <%= form_for :role, url: roles_path, :html => { :multipart => true }  do|f| %>
+  <%= form_for @role do |f| %>
       <div class="section_block" id="section_block">
         <div class="login_content">
           <div class="login-head">
@@ -25,18 +25,21 @@
               </div>
           <% end %>
 
-          <p class="form-group">
+          <div class="form-group">
             <%= f.label :RoleName %>
             <%= f.select(:role_name, options_for_select([['admin','Admin'],['Author','Author']])) %>
-          </p>
+          </div>
 
 
 
 
 
-          <p class= "button" >
+          <div class= "button" >
             <%= f.submit %>
-          </p>
+          </div>
 
   <% end %>
-  <%= link_to 'Back', clients_path %>
+  <b><%= link_to 'Back', roles_path %></b>
+  </div>
+  </div>
+</div>
