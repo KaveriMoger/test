@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223121236) do
+ActiveRecord::Schema.define(version: 20160107074328) do
 
   create_table "clients", force: true do |t|
     t.string   "c_name"
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 20151223121236) do
     t.datetime "updated_at"
     t.string   "file_path"
     t.string   "team_name"
+    t.integer  "client_id"
+    t.integer  "team_id"
+    t.string   "file_name"
+    t.string   "search"
+    t.string   "image_name"
   end
 
   create_table "installs", force: true do |t|
@@ -108,6 +113,7 @@ ActiveRecord::Schema.define(version: 20151223121236) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "password_digest"
+    t.integer  "role_id"
   end
 
 end
