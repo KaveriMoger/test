@@ -1,36 +1,100 @@
-<%= link_to 'New document', new_document_path %>
-
-<h1>Listing documents</h1>                
- 
-<table>
-  <tr>
-    <th>NAME</th>
-    <th>AUTHOR</th>
-    <th>DESCRIPTION</th>
-    
-    
-  </tr>
- 
-  <% @document.each do |document| %>
-    <tr>
-      <td><%= document.dname %></td>
-      <td><%= document.dauthor %></td>
-      <td><%= document.description %>
-      
-      <td><%= link_to 'Show', document_path(document) %></td>
-      <td><%= link_to 'Edit', edit_document_path(document) %></td>
-      <td><%= link_to 'Destroy', document_path(document),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
-  
 
 
 
+<img src="/images/242x82.png"> </img>
+
+<div class="left">
+  <div class="menu-block">
+    <div class="horizontalmenu">
+      <ul>
+        <ul>
+          <li><a class="active" href="/home">Home</a></li>
+
+        </ul>
+        <li><%= link_to 'Documents'%>
+          <ul>
+            <li><%= link_to 'Documents Create', new_document_path %></li>
+            <li><%= link_to 'Documents Listing', documents_path %></li>
+          </ul>
+        </li>
+        <li><%= link_to 'Clients'%>
+          <ul>
+            <li><%= link_to 'Clients Create', new_client_path %></li>
+            <li><%= link_to 'Clients Listing', clients_path %></li>
+          </ul>
+
+        </li>
+        <li><%= link_to 'Teams'%>
+          <ul>
+            <li><%= link_to 'Teams Create', new_team_path %></li>
+            <li><%= link_to 'Teams Listing', teams_path %></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div><!--le
+
+<div class="signup_block">
+
+    <div class="section_block" id="section_block">
+      <div class="login_content">
+        <div class="login-head">
+
+        </div><!--login-head-->
+</div>
+
+<div class><center><%= form_tag documents_path, :method => 'get' do %>
+
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :dname => nil %>
+
+  <% end %></center></div></br>
+
+</div>
+
+
+<h1 style="color:maroon"><center>Document List</center></h1>
+<p style="float:right;list-style-type:none;color:blue">
+  <b> <%= link_to 'New..?', new_document_path %></b>
+</p>
+<div class="section_block" id="section_block">
+  <div class="login_content">
+    <div class="login-head">
 
 
 
+      <p><center>   <table>
+      <tr>
+        <th style="color:cornflowerblue">NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th style="color:cornflowerblue">AUTHOR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th style="color:cornflowerblue">DESCRIPTION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th style="color:cornflowerblue">FILE_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th style="color:cornflowerblue">IMAGE_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 
+      </tr>
 
+      <% @document.each do |document| %>
+
+          <tr>
+            <td ><%= link_to "#{document.dname}", document_path(document) %>
+            <td><%= document.dauthor %></td>
+            <td><%= document.description %></td>
+            <td><%= document.file_name %></td>
+            <td><%= document.image_name %></td>
+            <td><%= button_to 'edit', "/documents/edit?id=#{document.id}", :class => "edit" %></td>
+            <td><%= button_to 'delete', "/documents/destroy?id=#{document.id}", :class => "destroy" ,
+                              method: :destroy,
+                              data: { confirm: 'Are you sure?' } %></td>
+
+            <td><%= button_to 'Download', "/documents/download_file?id=#{document.id}", :class => "download_file" %></td>
+
+          </tr>
+      <% end %>
+    </table></center></p>
+    </div>
+
+  </div>
+</div><!--login-head-->
+</div>
