@@ -2,8 +2,6 @@
 
 one:
   role_name: MyString
-  user_id: 1
 
 two:
   role_name: MyString
-  user_id: 1
